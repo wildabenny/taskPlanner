@@ -19,6 +19,7 @@ class UserController extends Controller
     public function welcomeAction()
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        return ['user' => $user];
+
+        return ['user' => $user, 'tasks' => $user->getTasks()];
     }
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Task
@@ -24,16 +25,20 @@ class Task
     /**
      * @var
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
+     * @Assert\GreaterThan("+1 hour")
      */
     protected $startDate;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     protected $creationDate;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     protected $finishDate;
 
@@ -44,6 +49,8 @@ class Task
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     *
      */
     protected $name;
 
