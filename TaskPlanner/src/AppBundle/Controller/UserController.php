@@ -22,4 +22,14 @@ class UserController extends Controller
 
         return ['user' => $user, 'tasks' => $user->getTasks()];
     }
+
+    /**
+     * @Route("/welcome/test")
+     */
+
+    public function testAction() {
+        $task = $this->getDoctrine()->getManager()->getRepository('AppBundle:Task')->findAll();
+
+        return $this->render('AppBundle:Profile:testView.html.twig', array());
+    }
 }
