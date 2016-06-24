@@ -21,5 +21,3 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /user
 
-adesigns_calendar:
-  resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
