@@ -35,8 +35,11 @@
 <br>
 <div>
     <div class="tasks">
+        <ul class="list-group">
         {% for task in tasks %}
-            {{ task.name }}
+            <li class="list-group-item">  {{ task.name }} <span>Created</span> {{ task.creationDate|date('Y-m-d H:m') }}
+            </li>
         {% endfor %}
+        </ul>
     </div>
 </div>
