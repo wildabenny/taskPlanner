@@ -4,9 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/starter-template.css') }}" type="text/css" media="all"/>
 {% endblock %}
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('js/jquery-3.0.`.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-3.0.0.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/showTask.js') }}"></script>
+    <script>
+        var tasks = {{ tasks|json_encode() }};
+    </script>
 {% endblock %}
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -37,7 +40,9 @@
     <div class="tasks">
         <ul class="list-group">
         {% for task in tasks %}
-            <li class="list-group-item">  {{ task.name }} <span>Created</span> {{ task.creationDate|date('Y-m-d H:m') }}
+            <li class="list-group-item" data-id="{{ task.name }}">  {{ task.name }}
+                <span>Created</span> {{ task.creationDate|date('Y-m-d H:m') }}
+                <button type="button" class="btn btn-default">Show Task</button>
             </li>
         {% endfor %}
         </ul>
