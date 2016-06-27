@@ -4,7 +4,8 @@ $(function () {
 
     buttons.on("click", function (event) {
         event.preventDefault();
-        console.log($(this).parent($("#list-groupItem")).val());
+        var liElement = $(this).closest("li");
+        console.log(liElement.attr("data-id"));
     });
 
 });
