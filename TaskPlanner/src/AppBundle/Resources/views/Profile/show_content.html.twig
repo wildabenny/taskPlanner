@@ -6,6 +6,8 @@
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-2.2.4.js"
             integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script language="JavaScript" type="text/javascript" src="{{ asset('js/showTask.js') }}"></script>
 {% endblock %}
 
@@ -35,13 +37,13 @@
 <br>
 <div>
     <div class="tasks">
-        <ul class="list-group">
+        <ul class="list-group" id="lista">
         {% for task in tasks %}
             <li class="list-group-item" data-id="{{ task.id }}">  {{ task.name }}
                 <span>Created</span> {{ task.creationDate|date('Y-m-d H:m') }}
-                <button type="button" class="btn btn-default">Show Task</button>
             </li>
         {% endfor %}
         </ul>
+        <div id="taskDiv"></div>
     </div>
 </div>

@@ -8,7 +8,9 @@ use AppBundle\Form\Type\FormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/task")
@@ -45,5 +47,34 @@ class TaskController extends Controller
     {
         return $this->render('AppBundle:Task:successTask.html.twig', array());
         
+    }
+
+    /**
+     * @Route("/searchTask", options={"expose"=true})
+     */
+    public function searchTaskAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->get('request');
+
+        $taskId = intval($request->request->get('id'));
+
+        $task = $em->getRepository('AppBundle:Task')->find($taskId);
+        $status = 'error';
+        $html = '';
+        if ($task) {
+            $data = $this->render('AppBundle:Task:showTask.html.twig', array('task' => $task));
+            $status = 'success';
+            $html = $data->getContent();
+        }
+        $jsonArray = array(
+            'status' => $status,
+            'data' => $html
+        );
+
+        $response = new Response(json_encode($jsonArray));
+        $response->headers->set('Content-Type', 'application/json; charset=utf-8');
+
+        return $response;
     }
 }
