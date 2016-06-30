@@ -12,6 +12,7 @@ Funkcjonalności: <br>
  - OOP PHP
  - Symfony 2
  - Doctrine
+ - MySQL
  - JQuery
  - AJAX
  - FOSUserBundle
