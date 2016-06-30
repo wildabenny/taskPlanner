@@ -7,6 +7,7 @@ Funkcjonalności: <br>
 - dodawanie zadań
 - wyświetlanie zadań, możliwość zobaczenia szczegółów
 - walidacja wprowadzanych danych
+- dodawanie kategorii do zadań
 
  Użyte technologie: <br>
  - OOP PHP

@@ -3,6 +3,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\Task;
 use AppBundle\Form\Type\FormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -76,5 +77,28 @@ class TaskController extends Controller
         $response->headers->set('Content-Type', 'application/json; charset=utf-8');
 
         return $response;
+    }
+
+    /**
+     * @Route("/newCategory")
+     * @Template()
+     */
+    public function newCategoryAction(Request $request)
+    {
+        $category = new Category();
+
+        $form = $this->createFormBuilder($category)
+            ->add('name')->add('submit', 'submit')->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+
+            return $this->redirectToRoute('app_task_newtask');
+        }
+
+        return ['form' => $form->createView()];
     }
 }

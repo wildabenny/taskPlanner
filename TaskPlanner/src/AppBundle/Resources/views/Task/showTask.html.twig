@@ -1,7 +1,7 @@
 
 <ul>
     <li>
-        <p>{{ task.name }} </p>
+        <p>{{ task.name }} <strong>Category: {{ task.category.name }}</strong></p>
         <p>Start Date: {{ task.startDate|date('Y-m-d H:m') }} Finish Date: {{ task.finishDate|date('Y-m-d H:m') }}</p>
     </li>
 </ul>

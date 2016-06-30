@@ -18,7 +18,12 @@ class FormType extends AbstractType
             ->add('name', TextType::class)
             ->add('startDate', DateTimeType::class)
             ->add('finishDate', DateTimeType::class)
-            ->add('Add Task', SubmitType::class);
+            ->add('Add Task', SubmitType::class)
+            ->add('category', 'entity', array(
+                'class' => 'AppBundle:Category',
+                'property' => 'name',
+                'multiple' => false
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
