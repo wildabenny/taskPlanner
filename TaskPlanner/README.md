@@ -1,4 +1,19 @@
 TaskPlanner
 ===========
 
-A Symfony project created on June 22, 2016, 11:22 am.
+Funkcjonalności: <br>
+- tworzenie użytkowników
+- logowanie, dostęp dla określonych grup
+- dodawanie zadań
+- wyświetlanie zadań, możliwość zobaczenia szczegółów
+- walidacja wprowadzanych danych
+
+ Użyte technologie: <br>
+ - OOP PHP
+ - Symfony 2
+ - Doctrine
+ - JQuery
+ - AJAX
+ - FOSUserBundle
+ - JsRoutingBundle
+ - Bootstrap

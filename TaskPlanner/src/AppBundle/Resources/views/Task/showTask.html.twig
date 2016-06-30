@@ -1,5 +1,7 @@
+
 <ul>
     <li>
-        {{ task.name }}
+        <p>{{ task.name }} </p>
+        <p>Start Date: {{ task.startDate|date('Y-m-d H:m') }} Finish Date: {{ task.finishDate|date('Y-m-d H:m') }}</p>
     </li>
 </ul>
