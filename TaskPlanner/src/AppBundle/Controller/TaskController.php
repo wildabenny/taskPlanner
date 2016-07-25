@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Task;
 use AppBundle\Form\Type\FormType;
+use AppBundle\Form\Type\FormTypeFromDb;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -114,7 +115,7 @@ class TaskController extends Controller
             return $this->createNotFoundException("No task found");
         }
 
-        $form = $this->createForm(FormType::class, $task);
+        $form = $this->createForm(FormTypeFromDb::class, $task);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
