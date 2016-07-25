@@ -1,16 +1,16 @@
 TaskPlanner
 ===========
 
-Funkcjonalności: <br>
+Funkcjonalności:
 - tworzenie użytkowników
 - logowanie, dostęp dla określonych grup
 - dodawanie zadań
 - wyświetlanie zadań, możliwość zobaczenia szczegółów
 - walidacja wprowadzanych danych
 - dodawanie kategorii do zadań
+- edycja zadań
 
  Użyte technologie: <br>
- - OOP PHP
  - Symfony 2
  - Doctrine
  - MySQL

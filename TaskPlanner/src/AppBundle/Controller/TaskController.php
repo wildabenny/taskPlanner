@@ -9,7 +9,6 @@ use AppBundle\Form\Type\FormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -81,7 +80,6 @@ class TaskController extends Controller
 
     /**
      * @Route("/newCategory")
-     * @Template()
      */
     public function newCategoryAction(Request $request)
     {
@@ -97,6 +95,31 @@ class TaskController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('app_task_newtask');
+        }
+
+        return $this->render('AppBundle:Task:newCategory.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/editTask/{id}")
+     * @Template()
+     */
+    public function editTaskAction(Request $request, $id)
+    {
+        $task = $this->getDoctrine()->getRepository('AppBundle:Task')->find($id);
+
+        if (!$task) {
+            return $this->createNotFoundException("No task found");
+        }
+
+        $form = $this->createForm(FormType::class, $task);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_user_welcome');
         }
 
         return ['form' => $form->createView()];
