@@ -22,7 +22,7 @@ $(function () {
                     taskDiv.empty();
                     taskDiv.html(parsedData.data);
                 } else {
-                    console.log("Cos nie tak:(");
+                    console.log("Error during calling AJAX");
                 }
             }
         })

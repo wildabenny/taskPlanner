@@ -3,6 +3,12 @@
     <li>
         <p>{{ task.name }} <strong>Category: {{ task.category.name }}</strong></p>
         <p>Start Date: {{ task.startDate|date('Y-m-d H:m') }} Finish Date: {{ task.finishDate|date('Y-m-d H:m') }}</p>
-        <a href="{{ path('app_task_edittask', {'id': task.id}) }}">Edit Task</a>
+        {% if task.isFinished == 1 %}
+            <p><strong>Task Is Finished</strong></p>
+        {% endif %}
+        {% if task.isFinished == 0 %}
+            <p><strong>Task Is Acive</strong></p>
+            <a href="{{ path('app_task_edittask', {'id': task.id}) }}">Edit Task</a>
+        {% endif %}
     </li>
 </ul>
