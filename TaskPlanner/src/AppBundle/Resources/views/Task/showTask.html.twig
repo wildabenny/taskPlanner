@@ -1,4 +1,14 @@
-
+{% block javascripts %}
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery-3.0.0.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/finishTask.js') }}"></script>
+{% endblock %}
+<style>
+    b {
+        font-weight: bold;
+    }
+</style>
 <ul>
     <li>
         <p>{{ task.name }} <strong>Category: {{ task.category.name }}</strong></p>
@@ -7,7 +17,9 @@
             <p><strong>Task Is Finished</strong></p>
         {% endif %}
         {% if task.isFinished == 0 %}
-            <p><strong>Task Is Acive</strong></p>
+            <p><b>Task Is Active</b>
+                <button type="button" id="button1">Finish Task</button>
+            </p>
             <a href="{{ path('app_task_edittask', {'id': task.id}) }}">Edit Task</a>
         {% endif %}
     </li>
