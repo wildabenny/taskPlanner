@@ -10,7 +10,7 @@
     }
 </style>
 <ul>
-    <li>
+    <li class="list" data-id="{{ task.id }}">
         <p>{{ task.name }} <strong>Category: {{ task.category.name }}</strong></p>
         <p>Start Date: {{ task.startDate|date('Y-m-d H:m') }} Finish Date: {{ task.finishDate|date('Y-m-d H:m') }}</p>
         {% if task.isFinished == 1 %}
