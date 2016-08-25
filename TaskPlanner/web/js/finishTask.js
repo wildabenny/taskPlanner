@@ -15,8 +15,6 @@ $(function () {
                     console.log("AJAX dziala")
                 } else {
                     console.log("AJAX nie dziala");
-                    var val = finishButton.attr("data-id");
-                    console.log(val);
                 }
             },
             error: function () {
