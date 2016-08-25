@@ -51,6 +51,28 @@ class TaskController extends Controller
     }
 
     /**
+     * @Route("/finishTask", options={"expose"=true})
+     */
+    public function finishTaskAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->get('request');
+
+        $taskId = intval($request->request->get('id'));
+
+        $task = $em->getRepository('AppBundle:Task')->find($taskId);
+
+        if ($task) {
+            $task->setIsFinished(true);
+            //$em->flush();
+            $response = array("code" => 100, "success" => true);
+            return new Response(json_encode($response));
+        }
+        $response = array("code" => 400, "success" => false);
+        return new Response(json_encode($response));
+    }
+
+    /**
      * @Route("/searchTask", options={"expose"=true})
      */
     public function searchTaskAction()

@@ -1,4 +1,4 @@
-
+<script language="JavaScript" type="text/javascript" src="{{ asset('js/finishTask.js') }}"></script>
 <ul>
     <li>
         <p>{{ task.name }} <strong>Category: {{ task.category.name }}</strong></p>
@@ -7,8 +7,11 @@
             <p><strong>Task Is Finished</strong></p>
         {% endif %}
         {% if task.isFinished == 0 %}
-            <p><strong>Task Is Acive</strong></p>
+            <p><strong>Task Is Active</strong></p>
             <a href="{{ path('app_task_edittask', {'id': task.id}) }}">Edit Task</a>
+            <p>
+                <button id="finishButton" data-id="{{ task.id }}">Finish Task</button>
+            </p>
         {% endif %}
     </li>
 </ul>
