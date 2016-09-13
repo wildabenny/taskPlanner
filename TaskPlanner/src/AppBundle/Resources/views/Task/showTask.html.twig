@@ -7,11 +7,13 @@
             <p><strong>Task Is Finished</strong></p>
         {% endif %}
         {% if task.isFinished == 0 %}
+            <div id="finishDiv">
             <p><strong>Task Is Active</strong></p>
             <a href="{{ path('app_task_edittask', {'id': task.id}) }}">Edit Task</a>
             <p>
                 <button id="finishButton" data-id="{{ task.id }}">Finish Task</button>
             </p>
+            </div>
         {% endif %}
     </li>
 </ul>

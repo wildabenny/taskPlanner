@@ -1,6 +1,7 @@
 $(function () {
 
-    var finishButton = $("#finishButton")
+    var finishButton = $("#finishButton");
+    var finishDiv = $("#finishDiv");
 
     finishButton.on("click", function (event) {
 
@@ -12,7 +13,8 @@ $(function () {
             data: "id=" + finishButton.attr("data-id"),
             success: function (response) {
                 if (response.code == 100 && response.success) {
-                    console.log("AJAX dziala")
+                    finishDiv.empty();
+                    finishDiv.append("<p><strong>Task Is Finished</strong></p>");
                 } else {
                     console.log("AJAX nie dziala");
                 }

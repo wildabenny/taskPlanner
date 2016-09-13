@@ -10,6 +10,7 @@ use AppBundle\Form\Type\FormTypeFromDb;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -64,12 +65,14 @@ class TaskController extends Controller
 
         if ($task) {
             $task->setIsFinished(true);
-            //$em->flush();
-            $response = array("code" => 100, "success" => true);
-            return new Response(json_encode($response));
+            $em->flush();
+            $response = new JsonResponse();
+            $response->setData(array("code" => 100, "success" => true));
+            return $response;
         }
-        $response = array("code" => 400, "success" => false);
-        return new Response(json_encode($response));
+        $response = new JsonResponse();
+        $response->setData(array("code" => 400, "success" => false));
+        return $response;
     }
 
     /**
